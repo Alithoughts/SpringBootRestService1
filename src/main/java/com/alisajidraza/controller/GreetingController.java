@@ -12,12 +12,12 @@ public class GreetingController {
 	
 	@Autowired
 	Greeting greeting;
-//    AtomicLong counter =new AtomicLong();
-	@GetMapping
-	public Greeting greeting()
+   AtomicLong counter =new AtomicLong();
+	@GetMapping("/greeting")
+	public Greeting greeting(@RequestParam(value="name")String name)
 	{
-		greeting.setId(1);
-		greeting.setContent("i am learning spring boot from" +"name");
+		greeting.setId(counter.incrementAndGet());
+		greeting.setContent("i am learning spring boot from "  +name);
 		
 		return greeting;
 	}
